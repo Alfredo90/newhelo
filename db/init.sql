@@ -6,6 +6,12 @@ CREATE TABLE users (
     
 );
 
+INSERT INTO users
+(username,password,profile_pic)
+VALUES
+('alf', 'martian', 'https://robohash.org/Hello')
+
+
 CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
     title VARCHAR(45),
@@ -13,8 +19,8 @@ CREATE TABLE posts (
     content TEXT,
     author_id INT REFERENCES users (id)
 );
--- VALUES
--- ('title1', 'img1', 'content1', null)
+VALUES
+('title1', 'img1', 'content1', null)
 
 ALTER TABLE users
 ALTER password

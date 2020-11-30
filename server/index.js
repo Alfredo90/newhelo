@@ -36,8 +36,9 @@ massive({
 ///AUTH ENDPOINTS
 app.post('/auth/register', ctrl.register);
 app.post('/auth/login', ctrl.login);
-// app/post('/auth/logout', ctrl.logout);
+// app.post('/auth/logout', ctrl.logout);
 
-app.get('/post/:postid', postCtrl.getAllPosts)
+
+app.get('/api/post/:userId', postCtrl.getAllPosts)
 
 app.listen(SERVER_PORT, () => console.log(`Listening to port ${SERVER_PORT}`))

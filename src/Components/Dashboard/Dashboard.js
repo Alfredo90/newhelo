@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
 
@@ -11,12 +11,13 @@ class Dashboard extends Component {
         super();
         this.state ={
             searchBox: '',
-            postList: '',
-            checkBox: true,
-           reset:''
+            postList: [],
+            checkBox: true
+         
             
         }
-        
+        this.checkBox = this.checkBox.bind(this)
+        this.searchBox = this.searchBox.bind(this)
     }
 
     handleChange = (e) => {
@@ -25,24 +26,29 @@ class Dashboard extends Component {
         })
     }
 
-  
-
-   componentDidMount = async () => {
-
-        const { checkBox, searchBox, id } = this.props
-
-    try{
-       const posts = await axios.get(`/post?checkBox=${checkBox}&searchBox=${searchBox}&userId=${id}`)
-       this.setState({ postList:posts})
+    checkBox() {
+        this.setState({
+            checkBox: !this.state.checkBox
+        })
     }
-    catch(err){
-        console.log(err.response.request.response)
+
+    searchBox() {
+        this.setState({
+            searchBox: this.state.searchBox
+        })
     }
-   } 
+
+
 
     render() {
-
-
+        console.log(this.state.checkBox)
+        let mappedPosts = this.state.postList.map(post => (
+            <div>
+                <h1>{post.title}</h1>
+                <h1>{post.username}</h1>
+                <img alt={`${post.username}'s profile`} src={post.profilePic}/>
+            </div>
+        ))
 
 
 
@@ -55,12 +61,13 @@ class Dashboard extends Component {
                     name='searchBox' 
                     onChange={this.handleChange}></input>
                     
-                    <button type="submit" onClick={this.searchBox}>Search</button>
+                    <button type="search" onChange= {this.searchBox}>Search</button>
                     <button type='reset' onClick={this.searchBox}>Reset</button>
-                    tState
+                   
                     <h5>My Post</h5>
-                    <input type='checkbox' onClick={this.checkBox} ></input>
+                    <input type='checkbox' defaultChecked onChange={this.checkBox} ></input>
                 </form>
+                {mappedPosts}
             </div>
         )
     }

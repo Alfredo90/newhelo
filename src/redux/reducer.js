@@ -3,11 +3,12 @@
 
 const initialState = {
    username: '',
-   id: '',
+   id: 0,
    profile_pic: ''
 }
 
 const LOGIN_USER = 'LOGIN_USER'
+const LOGOUT_USER = "LOGIN_USER";
 
 export function builder(id, username, profilePic) {
     return {
@@ -16,6 +17,12 @@ export function builder(id, username, profilePic) {
     }
 }
 
+export function logoutUser(){
+    return {
+        type: LOGOUT_USER,
+        payload: initialState
+    }
+}
 
 
 

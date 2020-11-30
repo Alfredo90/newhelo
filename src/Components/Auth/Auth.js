@@ -47,11 +47,6 @@ class Auth extends Component{
 
    
    
-    // handlechange = (e) => {
-    //     this.setState({ [e.target.name]: e.target.value})
-    // }
-
-
     
 
 
