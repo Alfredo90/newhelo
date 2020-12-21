@@ -32,7 +32,7 @@ login: async (req, res) => {
     const authenticated = bcrypt.compareSync(password, foundUser.password);
     if( authenticated ){
         req.session.user = {
-            id: foundUser.user_id,
+            id: foundUser.id,
             username: foundUser.username,
             profile_pic: foundUser.profile_pic
         }

@@ -3,7 +3,7 @@ module.exports = {
         const db = req.app.get('db');
         const {userPosts, searchString} = req.query
         const {userId} = req.params
-        console.log(checkBox)
+     //    console.log(checkBox)
         let userPost
         if (userPosts && searchString){
              userPost = await db.all_user_posts([userId, searchString])

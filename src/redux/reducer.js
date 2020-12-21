@@ -11,6 +11,7 @@ const LOGIN_USER = 'LOGIN_USER'
 const LOGOUT_USER = "LOGIN_USER";
 
 export function builder(id, username, profilePic) {
+    console.log(id, username, profilePic)
     return {
         type: LOGIN_USER,
         payload: {id, username, profilePic}

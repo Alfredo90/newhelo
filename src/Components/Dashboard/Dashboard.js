@@ -1,4 +1,4 @@
-// import axios from 'axios';
+import axios from 'axios';
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
 
@@ -19,6 +19,9 @@ class Dashboard extends Component {
         this.checkBox = this.checkBox.bind(this)
         this.searchBox = this.searchBox.bind(this)
     }
+    // componentDidMount(){
+    //     this.getPosts()
+    // }
 
     handleChange = (e) => {
         this.setState({
@@ -40,8 +43,17 @@ class Dashboard extends Component {
 
 
 
+  
+
+    getPosts = () => {
+        axios.get(`/api/post/${this.props.id}?searchString=${this.state.searchBox}&userPosts=${this.state.checkBox}`)
+        .then(response => this.setState({
+            postList: response.data
+        }))
+    } 
+
     render() {
-        console.log(this.state.checkBox)
+        console.log(this.props)
         let mappedPosts = this.state.postList.map(post => (
             <div>
                 <h1>{post.title}</h1>
